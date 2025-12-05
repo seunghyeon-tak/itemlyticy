@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: itemlytics-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: itemlytics
+      MYSQL_USER: mason
+      MYSQL_PASSWORD: 1234!
+    ports:
+      - "3306:3306"
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --default-time-zone=Asia/Seoul
+    volumes:
+      - itemlytics-mysql-data:/var/lib/mysql
+
+volumes:
+  itemlytics-mysql-data:
